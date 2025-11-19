@@ -13,17 +13,16 @@ Traditional trust region methods in reinforcement learning often rely on hard cl
 We compare three TRL methods for comparison:
 - GRPO without clipping
 - GRPO with clipping
-- GR-PSPO (GRPO with our proposed method) - this is implemented as a wrapper of the TRL GRPO Trainer and Configs (in grpo_wrapper.py).
+- GR-PSPO (GRPO with our proposed method) - this is implemented in the patches for the TRL GRPOTrainer and Configs (in grpotrainer.patch and grpoconfig.patch).
 
 ## Implementation Details
 
 ### Training System
 - `maths_finetuning.py`: Main training loop, fine-tuning a base model on the GSM8K training set.
-- `grpo_wrapper.py`: GR-PSPO as a wrapper of the GRPOTrainer and Config, where the trust region method decides if it is clipping (='clip') or PSPO (='pspo').
+- `grpotrainer|config.patch`: GR-PSPO as a wrapper of the GRPOTrainer and Config, where the trust region method decides if it is clipping (='clip') or PSPO (='pspo').
 - `maths_rewards.py`: Reward function set up and response parsing for mathematical reasoning tasks
 
 ### Analysis Tools
-- `extra_visualisation.py`: Extra training visualisations and metrics tracking
 - `save_model_locally.py`: Model and dataset management - to use iridis needed to have all the data offline, so this script saves the datasets and models to a local directory cached_files
 
 ## Setup and Installation

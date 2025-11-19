@@ -3,7 +3,7 @@ Script to train and evaluate GRPO on GSM8K with different trust_region methods, 
 This script was used to train the models in the paper "It’s Not You, It’s Clipping: A Soft Trust-Region via Probability Smoothing for LLM RL" by Madeleine Dwyer, Adam Sobey, Adriane Chapman, 2025.
 """
 from datasets import Dataset, load_from_disk, DatasetDict
-from trl import SFTConfig, SFTTrainer
+from trl import SFTConfig, SFTTrainer, GRPOTrainer, GRPOConfig
 import torch, os
 from transformers import AutoTokenizer, AutoModelForCausalLM, EarlyStoppingCallback, TrainerCallback, DataCollatorForLanguageModeling
 import pickle
@@ -15,7 +15,6 @@ import wandb
 
 from maths_rewards import gsm8k_numeric_reward
 from maths_dataset_loading import load_data, load_test_data
-from grpo_wrapper import GRPOTrainer, GRPOConfig
 
 FORCE_RETRAIN = True
 ROOT_DIR="./cached_files"
